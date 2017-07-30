@@ -5,9 +5,9 @@ class GoBrand extends Component {
   render() {
     return (
       <nav className="has-text-centered">
-        <Scrollchor to="#brand-list">
+        <Scrollchor to="#brand-list" >
           <span className="icon is-large">
-            <i className="fa fa-arrow-circle-down"></i>
+            <i className="fa fa-arrow-circle-down" />
           </span>
         </Scrollchor>
       </nav>

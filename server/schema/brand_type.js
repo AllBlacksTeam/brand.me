@@ -15,6 +15,7 @@ const BrandType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     likes: { type: GraphQLInt },
+    dislikes: { type: GraphQLInt },
   }),
 });
 

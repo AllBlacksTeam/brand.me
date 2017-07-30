@@ -20,11 +20,18 @@ const mutation = new GraphQLObjectType({
     },
     likeBrand: {
       type: BrandType,
-      args: { id: { type: GraphQLID } },
+      args: { id: { type: GraphQLID }},
       resolve(parentValue, { id }) {
         return Brand.like(id);
-      }
-    }
+      },
+    },
+    dislikeBrand: {
+      type: BrandType,
+      args: { id: { type: GraphQLID }},
+      resolve(parentValue, { id }) {
+        return Brand.dislike(id);
+      },
+    },
   },
 });
 

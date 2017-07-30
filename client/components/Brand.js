@@ -1,28 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'react-apollo';
 
-import mutation from '../mutations/LikeBrand';
+import LikeButton from './LikeButton';
+import DislikeButton from './DislikeButton';
 
 class Brand extends Component {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    likes: PropTypes.number.isRequired,
-    mutate: PropTypes.func.isRequired,
-  }
-  constructor(props) {
-    super(props);
-    this.onLike = this.onLike.bind(this);
-  }
-  onLike() {
-    const { id } = this.props;
-    this.props.mutate({
-      variables: { id },
-    });
-  }
   render() {
-    const { name, likes } = this.props;
+    const { name, id, likes, dislikes } = this.props;
     return (
       <div className="columns">
         <div className="column is-6 is-offset-3">
@@ -30,17 +14,14 @@ class Brand extends Component {
             <div className="card-content">
               <p className="title">
                 <span className="is-pulled-right">
-                  {likes}
+                  {likes - dislikes}
                 </span>
                 {name}
               </p>
             </div>
             <footer className="card-footer">
-              <a className="card-footer-item" onClick={this.onLike}>
-                <span className="icon">
-                  <i className="fa fa-thumbs-o-up"></i>
-                </span>
-              </a>
+              <DislikeButton id={id} dislikes={dislikes} />
+              <LikeButton id={id} likes={likes} />
             </footer>
           </div>
         </div>
@@ -49,4 +30,11 @@ class Brand extends Component {
   }
 }
 
-export default graphql(mutation)(Brand);
+Brand.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  likes: PropTypes.number.isRequired,
+  dislikes: PropTypes.number.isRequired,
+};
+
+export default Brand;

@@ -1,11 +1,9 @@
 import gql from 'graphql-tag';
 
 export default gql`
-  {
-    brands {
+  mutation DislikeBrand($id: ID) {
+    dislikeBrand(id: $id) {
       id
-      name
-      likes
       dislikes
     }
   }

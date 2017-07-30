@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const BrandSchema = new Schema({
   name: String,
   likes: { type: Number, default: 0 },
+  dislikes: { type: Number, default: 0 },
 });
 
 BrandSchema.statics.like = (id) => {
@@ -11,6 +12,15 @@ BrandSchema.statics.like = (id) => {
   return Brand.findById(id)
     .then(brand => {
       brand.likes = brand.likes + 1;
+      return brand.save();
+    })
+};
+
+BrandSchema.statics.dislike = (id) => {
+  const Brand = mongoose.model('brand');
+  return Brand.findById(id)
+    .then(brand => {
+      brand.dislikes = brand.dislikes + 1;
       return brand.save();
     })
 };
