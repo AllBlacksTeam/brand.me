@@ -10,8 +10,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js --ignore client",
-    "build": "NODE_ENV=production webpack -p",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "NODE_ENV=production webpack -p"
   },
   "author": "",
   "license": "ISC",
