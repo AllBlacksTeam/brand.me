@@ -12,9 +12,7 @@ const PORT = process.env.PORT || 4000;
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
 
-const DB_USER = 'antonio';
-const DB_PASSWORD = 'password';
-const MONGO_URI = `mongodb://${DB_USER}:${DB_PASSWORD}@ds129333.mlab.com:29333/brandme`;
+const MONGO_URI = `mongodb://antonio:password@ds129333.mlab.com:29333/brandme`;
 mongoose.connect(MONGO_URI, (error) => {
   if (error) {
     console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
@@ -29,10 +27,18 @@ app.use('/graphql', expressGraphQL({
   graphiql: true
 }));
 
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpack = require('webpack');
-const webpackConfig = require('../webpack.config.js');
-app.use(webpackMiddleware(webpack(webpackConfig)));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+} else {
+  const webpackMiddleware = require('webpack-dev-middleware');
+  const webpack = require('webpack');
+  const webpackConfig = require('../webpack.config.js');
+  app.use(webpackMiddleware(webpack(webpackConfig)));
+}
 
 app.listen(PORT, (error) => {
   if (!error) {

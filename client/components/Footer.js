@@ -5,6 +5,9 @@ const Footer = () => (
     <div className="container">
       <div className="content has-text-centered">
         <p>
+          Made with JS with ❤️
+        </p>
+        <p>
           <a className="icon" href="https://github.com/AllBlacksTeam">
             <i className="fa fa-github" />
           </a>
