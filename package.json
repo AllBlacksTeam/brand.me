@@ -8,9 +8,9 @@
     "npm": "5.3.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "NODE_ENV=production node index.js",
     "dev": "nodemon index.js --ignore client",
-    "heroku-postbuild": "NODE_ENV=production webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": "NODE_ENV=production webpack -p --progress"
   },
   "author": "",
   "license": "ISC",
