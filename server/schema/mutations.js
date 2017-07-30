@@ -9,7 +9,7 @@ const Brand = mongoose.model('brand');
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addBrand: {
+    createBrand: {
       type: BrandType,
       args: {
         name: { type: GraphQLString },
