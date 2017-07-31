@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4000;
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
 
-const MONGO_URI = `mongodb://antonio:password@ds129333.mlab.com:29333/brandme`;
+const MONGO_URI = "";
 mongoose.connect(MONGO_URI, (error) => {
   if (error) {
     console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
