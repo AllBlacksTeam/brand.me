@@ -8,7 +8,7 @@ const Footer = () => (
           Made with JS with ❤️
         </p>
         <p>
-          <a className="icon" href="https://github.com/AllBlacksTeam">
+          <a className="icon" href="https://github.com/AllBlacksTeam/brand.me">
             <i className="fa fa-github" />
           </a>
         </p>
