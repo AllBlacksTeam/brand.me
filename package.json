@@ -9,10 +9,10 @@
   },
   "scripts": {
     "start": "NODE_ENV=production node index.js",
-    "dev": "nodemon index.js --ignore client",
+    "dev": "NODE_ENV=development nodemon index.js --ignore client",
     "heroku-postbuild": "NODE_ENV=production webpack -p --progress"
   },
-  "author": "",
+  "author": "Salvador Marí",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
